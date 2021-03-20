@@ -24,11 +24,9 @@ public class PetBookImagesStepDefinition {
 		theActorCalled(nombreActor).attemptsTo(SeleccionarPetBook.laImagen(id));
 	}
 
-	
 	@Entonces("^debe ver la imagen (\\d+) en pantalla completa$")
 	public void debeVerLaImagenEnPantallaCompleta(int id) {
-		
-		theActorInTheSpotlight().should(seeThat(ResultadoSeleccionPetBook.resultado())
-				.orComplainWith(ComportamientoInesperado.class, ID_NO_ENCONTRADO ));
+		theActorInTheSpotlight().should(seeThat(ResultadoSeleccionPetBook.resultado(id))
+				.orComplainWith(ComportamientoInesperado.class, ID_NO_ENCONTRADO));
 	}
 }

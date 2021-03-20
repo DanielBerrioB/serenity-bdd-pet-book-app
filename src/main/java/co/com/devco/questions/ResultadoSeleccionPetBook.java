@@ -10,19 +10,18 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
 public class ResultadoSeleccionPetBook implements Question<Boolean> {
-	
+	private int id;
 
-	public ResultadoSeleccionPetBook() {
-		
+	public ResultadoSeleccionPetBook(int id) {
+		this.id = id;
 	}
 
-	public static ResultadoSeleccionPetBook resultado() {
-		return new ResultadoSeleccionPetBook();
+	public static ResultadoSeleccionPetBook resultado(int id) {
+		return new ResultadoSeleccionPetBook(id);
 	}
 
 	@Override
 	public Boolean answeredBy(Actor actor) {
-		return BIG_IMAGE.resolveFor(actor).isVisible();
-		
+		return BIG_IMAGE.resolveFor(actor).getAttribute("style").contains("assets/images/");
 	}
 }
